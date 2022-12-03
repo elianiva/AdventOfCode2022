@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace AdventOfCode2022.Solutions.Day2;
 
@@ -67,41 +68,19 @@ internal class Solution
 
     public static int FirstPart(Stream fileStream)
     {
-        using StreamReader streamReader = new(fileStream);
-
-        int totalScore = 0;
-        while (!streamReader.EndOfStream)
+        return fileStream.ToEnumerable().Aggregate(0, (acc, line) => acc + line.Split(' ') switch
         {
-            string? line = streamReader.ReadLine();
-            if (line is null) continue;
-            int score = line.Split(' ') switch
-            {
-                [string opponent, string you] => SCORE_MAP[you] + getWinner(opponent, you),
-                _ => 0,
-            };
-            totalScore += score;
-        }
-
-        return totalScore;
+            [string opponent, string you] => SCORE_MAP[you] + getWinner(opponent, you),
+            _ => 0
+        });
     }
 
     public static int SecondPart(Stream fileStream)
     {
-        using StreamReader streamReader = new(fileStream);
-
-        int totalScore = 0;
-        while (!streamReader.EndOfStream)
+        return fileStream.ToEnumerable().Aggregate(0, (acc, line) => acc + line.Split(' ') switch
         {
-            string? line = streamReader.ReadLine();
-            if (line is null) continue;
-            int score = line.Split(' ') switch
-            {
-                [string opponent, string you] => getScore(opponent, you),
-                _ => 0,
-            };
-            totalScore += score;
-        }
-
-        return totalScore;
+            [string opponent, string you] => getScore(opponent, you),
+            _ => 0,
+        });
     }
 }

@@ -17,7 +17,7 @@ public class Day2Test
     [Fact]
     public void ShouldBeAbleToSolveExampleInput()
     {
-        using Stream? exampleInputStream = new FileStream("./Tests/Day1/ExampleInput.txt", FileMode.Open);
+        using Stream? exampleInputStream = File.Open("./Tests/Day1/ExampleInput.txt", FileMode.Open);
         int maxCalory = Solution.FirstPart(exampleInputStream);
         Assert.Equal(24_000, maxCalory);
     }
@@ -25,7 +25,7 @@ public class Day2Test
     [Fact]
     public void ShouldBeAbleToSolveRealInputFirstPart()
     {
-        using Stream? inputStream = new FileStream("./Tests/Day1/Input.txt", FileMode.Open);
+        using Stream? inputStream = File.Open("./Tests/Day1/Input.txt", FileMode.Open);
         int maxCalory = Solution.FirstPart(inputStream);
         output.WriteLine($"First Part: {maxCalory}");
     }
@@ -33,7 +33,7 @@ public class Day2Test
     [Fact]
     public void ShouldBeAbleToSolveRealInputSecondPart()
     {
-        using Stream? inputStream = new FileStream("./Tests/Day1/Input.txt", FileMode.Open);
+        using Stream? inputStream = File.Open("./Tests/Day1/Input.txt", FileMode.Open);
         int maxCalory = Solution.SecondPart(inputStream);
         output.WriteLine($"Second Part: {maxCalory}");
     }
