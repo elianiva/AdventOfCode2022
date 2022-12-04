@@ -5,11 +5,11 @@ using Xunit.Abstractions;
 
 namespace Tests.Day3;
 
-public class Day3Test
+public class Day4Test
 {
     private readonly ITestOutputHelper output;
 
-    public Day3Test(ITestOutputHelper output)
+    public Day4Test(ITestOutputHelper output)
     {
         this.output = output;
     }
